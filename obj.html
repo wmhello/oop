@@ -12,35 +12,34 @@
     <script src="js/Teacher.js"></script>
      <script>
        var content = {};
-       var address = {};
-       function getAddress (name) {
+       var obj = {};
+       var seederAddress = 
+       function getObj (name) {
            var s1;
            switch (name) {
                case 'teacher':
-               if (! address instanceof Teacher) {
-                    s1= new Teacher();
+               if (! obj  instanceof Teacher) {
+                    obj  = new Teacher();
                 }
                 break; 
                case 'student':
-               if ( address instanceof Student) {
+               if ( obj  instanceof Student) {
                 } else {
-                    address = new Student();
+                    obj  = new Student();
                 } 
                 break;
            }
        }
-    //    console.log(address instanceof Student);
-    //    address = new Student();
-    //    console.log(address instanceof Student);
-       getAddress('student')
-       content = address.create();
+
+      this.getObj('student')
+       content = this.obj.create();
        console.log(content)      
-       getAddress('student')
-       address.model.test1 = 'test';
-       content = address.create(); 
+      this.getObj('student')
+       this.obj.model.test1 = 'test';
+       content = this.obj.create(); 
        console.log(content)    
-       getAddress('student')
-       console.log(address)   
+      this.getObj('student')
+       console.log(this.obj)   
 
      </script>   
 </body>

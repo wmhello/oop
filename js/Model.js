@@ -9,7 +9,9 @@ function Model (model, api) {
 
 Model.prototype = {
     show: function (id) {
-        console.log('父类显示记录方法');
+        app.$http.post(this.api.show, {id: id}).then(function(response) {
+            app.content = response.data.data; 
+         })
     },
     list: function(id) {
         console.log('父类显示列表方法');
@@ -17,14 +19,27 @@ Model.prototype = {
     create: function() {
         return this.model;
     },
-    save: function() {
-        console.log('父类保存记录方法');
+    save: function(data,callback) {
+       if (this.isNew) {
+           this.new(data, callback)
+       }
+       if (this.isEdit) {
+           this.update(data,callback);
+       }
     },
-    new: function() {
-        console.log('父类新建记录方法');
+    new: function(data, callback) {
+          app.$http.post(this.api.new, data).then(function(response) {
+           if (callback && typeof callback === 'function'){
+               callback();
+           }
+        })
     },
-    update: function(id) {
-        console.log('父类更新记录方法');
+    update: function(data, callback) {
+        app.$http.post(this.api.update, data).then(function(response) {
+            if (callback && typeof callback === 'function'){
+                callback();
+            }
+         })
     },
     delete: function(id, callback) {
         app.$http.post(this.api.destroy, {id: id}).then(function(response) {
