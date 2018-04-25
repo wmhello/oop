@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/Model.js"></script>
+    <script src="js/Student.js"></script>
+    <script src="js/Teacher.js"></script>
+     <script>
+       var content = {};
+       var address = {};
+       function getAddress (name) {
+           var s1;
+           switch (name) {
+               case 'teacher':
+               if (! address instanceof Teacher) {
+                    s1= new Teacher();
+                }
+                break; 
+               case 'student':
+               if ( address instanceof Student) {
+                } else {
+                    address = new Student();
+                } 
+                break;
+           }
+       }
+    //    console.log(address instanceof Student);
+    //    address = new Student();
+    //    console.log(address instanceof Student);
+       getAddress('student')
+       content = address.create();
+       console.log(content)      
+       getAddress('student')
+       address.model.test1 = 'test';
+       content = address.create(); 
+       console.log(content)    
+       getAddress('student')
+       console.log(address)   
+
+     </script>   
+</body>
+</html>
