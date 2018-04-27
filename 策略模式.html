@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title设计模式学习</title>
+</head>
+
+<body>
+  <h1>计算奖金，不同的工资和不同考核级别可以算得不同的奖金</h1>
+  <script>
+    //策略类
+   var strategies = {
+     'S': function(salary){
+          return salary*4
+     } ,
+     'A': function(salary) {
+          return salary*3
+     },
+     'B': function (salary) {
+       return salary * 2
+     },
+   };
+   // 环境类
+   var calculateBonus = function(level, salary) {
+     return strategies[level](salary);
+   };
+
+   console.log(calculateBonus('S', 3000));
+   console.log(calculateBonus('B', 3000));
+  </script>
+
+</body>
+
+</html>

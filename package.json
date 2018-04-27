@@ -1,0 +1,23 @@
+{
+  "name": "oop",
+  "version": "1.0.0",
+  "description": "JS面向对象学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmhello/oop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wmhello/oop/issues"
+  },
+  "homepage": "https://github.com/wmhello/oop#readme",
+  "dependencies": {
+    "vue": "^2.5.15",
+    "vuejs-dialog": "^0.9.0"
+  }
+}

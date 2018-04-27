@@ -7,40 +7,60 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+
+    </div>
     <script src="js/Model.js"></script>
     <script src="js/Student.js"></script>
     <script src="js/Teacher.js"></script>
+
      <script>
        var content = {};
        var obj = {};
-       var seederAddress = 
        function getObj (name) {
            var s1;
            switch (name) {
                case 'teacher':
-               if (! obj  instanceof Teacher) {
-                    obj  = new Teacher();
+               if (Object.getPrototypeOf(obj) === Teacher.prototype) {
+                   console.log('使用旧的教师对象')
+                } else {
+                   obj = new Teacher();
+                   console.log('新建教师对象')
                 }
-                break; 
+                break;
                case 'student':
-               if ( obj  instanceof Student) {
+               if ( Object.getPrototypeOf(obj) === Student.prototype) {
+                   console.log('使用旧的学生对象')
                 } else {
                     obj  = new Student();
-                } 
+                    console.log('新建学生对象')
+                }
                 break;
            }
        }
 
-      this.getObj('student')
-       content = this.obj.create();
-       console.log(content)      
-      this.getObj('student')
-       this.obj.model.test1 = 'test';
-       content = this.obj.create(); 
-       console.log(content)    
-      this.getObj('student')
-       console.log(this.obj)   
+        getObj('student')
+       content =   obj.create();
+        getObj('student')
+        obj.model.test1 = 'test';
+         console.log(obj)
+       content =   obj.create();
+       console.log(content)
+        getObj('teacher')
+        getObj('teacher')
+        getObj('student')
 
-     </script>   
+     </script>
+     <script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+     <script src="node_modules/vue/dist/vue.min.js"></script>
+     <script src="node_modules/vuejs-dialog/dist/vuejs-dialog.min.js"></script>
+     <script>
+       Vue.use(VuejsDialog.default);
+       var app = new Vue({
+             el: '#app',             
+       });
+
+     </script>
+
 </body>
 </html>
